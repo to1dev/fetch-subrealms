@@ -51,7 +51,7 @@ async function processRealms(env: Env, results: any[]) {
 async function getRealms(env: Env, page: number): Promise<boolean | null> {
     const pageSize = 200;
     const offset = page * pageSize;
-    const sql = `SELECT RealmId FROM _realms ORDER BY RealmNumber LIMIT ${pageSize} OFFSET ${offset}`;
+    const sql = `SELECT RealmName, RealmId FROM _realms ORDER BY RealmNumber LIMIT ${pageSize} OFFSET ${offset}`;
     let needMore = false;
 
     try {
