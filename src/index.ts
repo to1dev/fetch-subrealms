@@ -40,7 +40,7 @@ async function processRealms(env: Env, results: any[]) {
             for (const result of results) {
                 const realm = result?.RealmName;
                 const id = result?.RealmId;
-                await env.queue.sendQueue(id);
+                await env.queue.sendQueue(realm, id);
             }
         } catch (e) {
             console.error('error processing realms', e);
