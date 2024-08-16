@@ -83,7 +83,7 @@ export default {
     async scheduled(event, env, ctx): Promise<void> {
         switch (event.cron) {
             case '*/5 * * * *':
-                const cacheKey = `counter:fetch-subrealms`;
+                /*const cacheKey = `counter:fetch-subrealms`;
                 const cachedData = await env.api.get<CacheData>(cacheKey, { type: 'json' });
                 let counter = cachedData?.counter || 0;
                 let current = cachedData?.current || 0;
@@ -107,7 +107,7 @@ export default {
                     ctx.waitUntil(env.api.put(cacheKey, JSON.stringify({ counter, current, fuckoff })));
                 } catch (e) {
                     console.error('getRealms error', e);
-                }
+                }*/
 
                 break;
 
