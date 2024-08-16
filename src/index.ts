@@ -206,7 +206,7 @@ async function processRealms(env: Env, results: any[]) {
 }
 
 async function getRealms(env: Env, page: number): Promise<boolean | null> {
-    const pageSize = 100;
+    const pageSize = 200;
     const offset = page * pageSize;
     const sql = `SELECT RealmId FROM _realms ORDER BY RealmNumber LIMIT ${pageSize} OFFSET ${offset}`;
     let needMore = false;
@@ -239,7 +239,7 @@ async function getRealms(env: Env, page: number): Promise<boolean | null> {
 export default {
     async scheduled(event, env, ctx): Promise<void> {
         switch (event.cron) {
-            case '* * * * *':
+            case '*/5 * * * *':
                 const cacheKey = `counter:fetch-subrealms`;
                 const cachedData = await env.api.get<CacheData>(cacheKey, { type: 'json' });
                 let counter = cachedData?.counter || 0;
